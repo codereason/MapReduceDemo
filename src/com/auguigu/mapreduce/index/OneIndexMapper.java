@@ -9,8 +9,9 @@ import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 
 import java.io.IOException;
 
-public class OneIndexMapper extends Mapper<LongWritable,Text,Text,IntWritable>{
+public class OneIndexMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
     Text k = new Text();
+
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 
@@ -19,11 +20,10 @@ public class OneIndexMapper extends Mapper<LongWritable,Text,Text,IntWritable>{
         String[] fields = line.split(" ");
         FileSplit inputsplit = (FileSplit) context.getInputSplit();
         String name = inputsplit.getPath().getName();
-        for(int i = 0; i < fields.length;i++){
-            k.set(fields[i] +"--"+ name);
-            context.write(k,new IntWritable(1));
+        for (int i = 0; i < fields.length; i++) {
+            k.set(fields[i] + "--" + name);
+            context.write(k, new IntWritable(1));
         }
-
 
 
     }

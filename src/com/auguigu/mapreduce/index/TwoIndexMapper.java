@@ -1,15 +1,13 @@
 package com.auguigu.mapreduce.index;
 
 
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
-import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 
 import java.io.IOException;
 
-public class TwoIndexMapper extends Mapper<LongWritable,Text,Text,Text>{
+public class TwoIndexMapper extends Mapper<LongWritable, Text, Text, Text> {
     Text k = new Text();
     Text v = new Text();
 
@@ -21,10 +19,9 @@ public class TwoIndexMapper extends Mapper<LongWritable,Text,Text,Text>{
         String[] fields = line.split("--");
         k.set(fields[0]);
         v.set(fields[1]);
-        context.write(k,v);
+        context.write(k, v);
     }
 
 
-
-    }
+}
 
