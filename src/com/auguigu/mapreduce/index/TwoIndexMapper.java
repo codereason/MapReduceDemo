@@ -8,8 +8,8 @@ import org.apache.hadoop.mapreduce.Mapper;
 import java.io.IOException;
 
 public class TwoIndexMapper extends Mapper<LongWritable, Text, Text, Text> {
-    Text k = new Text();
-    Text v = new Text();
+    private Text k = new Text();
+    private Text v = new Text();
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
